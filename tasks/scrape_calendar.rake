@@ -11,17 +11,40 @@ task :scraping do
   )
   client.authorization.fetch_access_token!
 
-  result = client.execute(
-    :api_method => client.discovered_api('calendar', 'v3').events.list,
-    :parameters => {
-      'calendarId'   => 'momocloch@gmail.com',
-      'singleEvents' => 'true',
-      'orderBy'      => 'startTime',
-      'timeMin'      => DateTime.now,
-      'timeMax'      => DateTime.now + 7,
-    },
-  )
-  result.data.items.each do |item|
-    p "#{ item.start['dateTime'] || item.start['date'] } - #{ item.end['dateTime']   || item.end['date'] }: #{ item.summary }"
+  Calendar.each do |calendar|
+    data = client.execute(
+      :api_method => client.discovered_api('calendar', 'v3').calendars.get,
+      :parameters => { 'calendarId' => calendar.cid },
+    ).data
+    calendar.update(
+      :summary     => data.summary,
+      :description => data.description,
+    )
+    calendar.events_dataset.delete
+    events = client.execute(
+      :api_method => client.discovered_api('calendar', 'v3').events.list,
+      :parameters => {
+        'calendarId'   => calendar.cid,
+        'singleEvents' => true,
+        'orderBy'      => 'startTime',
+        'timeMin'      => DateTime.now,
+        'timeMax'      => DateTime.now >> 1,
+      },
+    ).data.items
+    events.each do |item|
+      start_datetime = item.start['dateTime'] || Date.parse(item.start['date'])
+      end_datetime   = item.end['dateTime']   || Date.parse(item.end['date'])
+      Event.find_or_create(:id => item.id).update(
+        :calendar_id => calendar.id,
+        :created     => item.created,
+        :updated     => item.updated,
+        :summary     => item.summary,
+        :description => item.description,
+        :location    => item.location,
+        :htmlLink    => item.htmlLink,
+        :start       => start_datetime,
+        :end         => end_datetime,
+      )
+    end
   end
 end
