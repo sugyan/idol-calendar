@@ -1,1 +1,1 @@
-web: bundle exec padrino start
+web: bundle exec padrino start -p $PORT
