@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    meta charset="UTF-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    title idol-calendar
+    link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css" media="screen"
+    link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap-responsive.min.css"
+  body
+    .navbar.navbar-static-top
+      .navbar-inner
+        .container
+          == link_to 'idol-calendar', '/', :class => 'brand'
+    .container
+      == yield
+    script type="text/javascript" src="/javascripts/lib/jquery-1.9.1.min.js"
+    script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"
