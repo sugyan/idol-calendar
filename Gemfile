@@ -7,6 +7,8 @@ gem 'thin', '1.5.0'
 gem 'rake'
 gem 'sinatra-flash', :require => 'sinatra/flash'
 
+gem 'google-api-client', '0.6.2'
+
 # Component requirements
 gem 'slim'
 gem 'pg'
