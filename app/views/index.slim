@@ -1,4 +1,4 @@
 - Event.order(:start).each do |event|
   div
-    == link_to event.start.to_datetime.new_offset('+09:00').strftime('%Y-%m-%d %H:%M'), event.htmlLink
+    == link_to event.start.strftime('%Y-%m-%d %H:%M'), event.htmlLink
     |  #{ event.summary }

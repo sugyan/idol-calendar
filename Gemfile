@@ -8,6 +8,7 @@ gem 'rake'
 gem 'sinatra-flash', :require => 'sinatra/flash'
 
 gem 'google-api-client', '0.6.2'
+gem 'tzinfo',            '0.3.35'
 
 # Component requirements
 gem 'slim'

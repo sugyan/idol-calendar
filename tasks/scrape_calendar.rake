@@ -1,6 +1,7 @@
 require 'google/api_client'
 
 task :scraping do
+  log = Logger.new(STDOUT)
   client = Google::APIClient.new(:application_name => 'idol-calendar', :version => '0.0.1')
   client.authorization = Signet::OAuth2::Client.new(
     :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
@@ -12,6 +13,7 @@ task :scraping do
   client.authorization.fetch_access_token!
 
   Calendar.each do |calendar|
+    log.info(calendar.cid)
     data = client.execute(
       :api_method => client.discovered_api('calendar', 'v3').calendars.get,
       :parameters => { 'calendarId' => calendar.cid },
@@ -45,6 +47,7 @@ task :scraping do
         :start       => start_datetime,
         :end         => end_datetime,
       )
+      log.info(item.id)
     end
   end
 end
