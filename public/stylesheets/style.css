@@ -1,0 +1,7 @@
+ul.events span.location {
+    color: gray;
+    padding: 0 5px;
+}
+ul.events span.summary {
+    padding: 0 5px;
+}

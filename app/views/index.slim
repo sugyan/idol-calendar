@@ -1,7 +1,8 @@
 h3 直近の現場一覧
-ul.unstyled
+ul.unstyled.events
   - Event.filter{ start > DateTime.now }.order(:start).each do |event|
     - w = %w(日 月 火 水 木 金 土)[event.start.wday]
     li
       == link_to event.start.strftime((event.start.hour || event.start.minute).zero? ? "%-m/%-d(#{w})" : "%-m/%-d(#{w}) %H:%M"), event.htmlLink, :target => '_blank'
-      |  #{ event.summary }
+      span.location= event.location
+      span.summary= event.summary
