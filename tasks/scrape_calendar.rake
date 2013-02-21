@@ -23,7 +23,8 @@ task :scraping do
       :description => data.description,
     )
     calendar.events_dataset.delete
-    events = client.execute(
+    # get events
+    client.execute(
       :api_method => client.discovered_api('calendar', 'v3').events.list,
       :parameters => {
         'calendarId'   => calendar.cid,
@@ -32,10 +33,9 @@ task :scraping do
         'timeMin'      => DateTime.now,
         'timeMax'      => DateTime.now >> 1,
       },
-    ).data.items
-    events.each do |item|
-      start_datetime = item.start['dateTime'] || Date.parse(item.start['date'])
-      end_datetime   = item.end['dateTime']   || Date.parse(item.end['date'])
+    ).data.items.each do |item|
+      start_datetime = item.start.date_time || Time.parse(item.start.date)
+      end_datetime   = item.end.date_time   || Time.parse(item.end.date)
       Event.find_or_create(:id => item.id).update(
         :calendar_id => calendar.id,
         :created     => item.created,
