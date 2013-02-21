@@ -34,8 +34,8 @@ task :scraping do
         'timeMax'      => DateTime.now >> 1,
       },
     ).data.items.each do |item|
-      start_datetime = item.start.date_time || Time.parse(item.start.date)
-      end_datetime   = item.end.date_time   || Time.parse(item.end.date)
+      start_datetime = item.start.date_time || item.start.date
+      end_datetime   = item.end.date_time   || item.end.date
       Event.find_or_create(:id => item.id).update(
         :calendar_id => calendar.id,
         :created     => item.created,
