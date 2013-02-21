@@ -12,6 +12,9 @@ html
       .navbar-inner
         .container
           == link_to 'idol-calendar', '/', :class => 'brand'
+          ul.nav.pull-right
+            li
+              == link_to 'about', '/about'
     .container
       == yield
     script type="text/javascript" src="/javascripts/lib/jquery-1.9.1.min.js"
