@@ -1,8 +1,13 @@
 h3 これは何？
 p
   == link_to 'アイドル関連のGoogleカレンダーまとめ : ガリバー日常記', 'http://gulliverdj.exblog.jp/19807773/'
-  | に載っているカレンダーからデータを取得して一覧表示しています。
+  | を参考に各Googleカレンダーからデータを定期的に取得して一覧表示しています。
 p 鋭意作成中。
+h4 取得対象としているカレンダー
+ul
+  - Calendar.each do |calendar|
+    li
+      == link_to calendar.summary, 'https://www.google.com/calendar/embed?src=' + CGI.escape(calendar.cid), :target => '_blank'
 footer
   .pull-right
     | created by 
