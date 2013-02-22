@@ -1,4 +1,5 @@
 h3 直近の現場一覧
+p 最終更新: #{ Event.select{ max(last_updated) }.first[:max].strftime('%Y-%m-%d %H:%M:%S') }
 ul.unstyled.events
   - now_line = false
   - Event.filter{ start >= Date.today }.order(:start).each do |event|
