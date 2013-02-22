@@ -3,7 +3,9 @@ p 最終更新: #{ Event.select{ max(last_updated) }.first[:max].strftime('%Y-%m
 ul.unstyled.events
   - line = nil
   - @events.each do |event|
-    - w = %w(日 月 火 水 木 金 土)[event.start.wday]
+    - wdays = %w(日 月 火 水 木 金 土)
+    - ws = wdays[event.start.wday]
+    - we = wdays[event.end.wday]
     - if event.start >= DateTime.now
       - unless line.nil? || line
         hr.now
@@ -11,7 +13,13 @@ ul.unstyled.events
     - else
       - line = false
     li
-      == link_to event.start.strftime((event.start.hour || event.start.minute).zero? ? "%-m/%-d(#{w})" : "%-m/%-d(#{w}) %H:%M"), event.htmlLink, :target => '_blank'
+      - if (event.start.hour || event.start.minute).zero?
+        - if event.end - event.start > 1
+          == link_to sprintf("%s - %s", event.start.strftime("%-m/%-d(#{ws})"), event.end.strftime("%-m/%-d(#{we})")), event.htmlLink, :target => '_blank'
+        - else
+          == link_to event.start.strftime("%-m/%-d(#{ws})"), event.htmlLink, :target => '_blank'
+      - else
+        == link_to event.start.strftime("%-m/%-d(#{ws}) %H:%M"), event.htmlLink, :target => '_blank'
       span.location = event.location
       span.summary = event.summary
 == slim :'include/pager', :layout => false, :locals => { :data => @events }

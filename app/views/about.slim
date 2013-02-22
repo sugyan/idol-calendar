@@ -2,8 +2,9 @@ h3 これは何？
 p
   == link_to 'アイドル関連のGoogleカレンダーまとめ : ガリバー日常記', 'http://gulliverdj.exblog.jp/19807773/'
   | を参考に各Googleカレンダーからデータを定期的に取得して一覧表示しています。
-p 鋭意作成中。
-h4 取得対象としているカレンダー
+p.text-warning 各カレンダーのすべてのイベント情報を取り込んでいるわけではなく漏れがある可能性もあります。
+p.text-error 鋭意作成中。
+h4 取得対象にしているカレンダー
 ul
   - Calendar.order(:id).each do |calendar|
     li
