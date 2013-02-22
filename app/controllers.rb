@@ -4,6 +4,14 @@ IdolCalendar.controllers  do
     render 'index'
   end
 
+  get :event, :with => :id do
+    if @event = Event[params[:id]]
+      render 'event'
+    else
+      error 404
+    end
+  end
+
   get :about do
     render 'about'
   end

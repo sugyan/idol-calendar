@@ -1,0 +1,18 @@
+h3 = @event.summary
+dl.dl-horizontal
+  dt カレンダー情報源
+  dd 
+    == link_to @event.calendar.summary, 'https://calendar.google.com/embed?src=' + CGI.escape(@event.calendar.cid), :target => '_blank'
+  dt 場所
+  dd == @event.location || '-'
+  dt 時間
+  dd = sprintf('%s - %s', @event.start.strftime('%Y-%m-%d %H:%M'), @event.end.strftime('%Y-%m-%d %H:%M'))
+  dt 詳細
+  dd
+    pre == @event.description
+  dt 作成日時
+  dd = @event.created.strftime('%Y-%m-%d %H:%M:%S')
+  dt 更新日時
+  dd = @event.updated.strftime('%Y-%m-%d %H:%M:%S')
+  dt GoogleカレンダーURL
+  dd == link_to @event.htmlLink, @event.htmlLink, :target => '_blank'
