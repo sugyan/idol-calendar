@@ -1,7 +1,11 @@
 h3 直近の現場一覧
 ul.unstyled.events
-  - Event.filter{ start > DateTime.now }.order(:start).each do |event|
+  - now_line = false
+  - Event.filter{ start >= Date.today }.order(:start).each do |event|
     - w = %w(日 月 火 水 木 金 土)[event.start.wday]
+    - if (! now_line) && event.start >= DateTime.now
+      hr.now
+      - now_line = true
     li
       == link_to event.start.strftime((event.start.hour || event.start.minute).zero? ? "%-m/%-d(#{w})" : "%-m/%-d(#{w}) %H:%M"), event.htmlLink, :target => '_blank'
       span.location= event.location

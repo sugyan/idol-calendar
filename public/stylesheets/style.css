@@ -5,3 +5,7 @@ ul.events span.location {
 ul.events span.summary {
     padding: 0 5px;
 }
+ul.events hr.now {
+    border: 1px solid #FF8080;
+    margin: 3px 0;
+}
