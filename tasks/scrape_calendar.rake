@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'google/api_client'
 
 task :scraping do
@@ -22,7 +23,6 @@ task :scraping do
       :summary     => data.summary,
       :description => data.description,
     )
-    calendar.events_dataset.delete
     # get events
     client.execute(
       :api_method => client.discovered_api('calendar', 'v3').events.list,
@@ -30,8 +30,8 @@ task :scraping do
         'calendarId'   => calendar.cid,
         'singleEvents' => true,
         'orderBy'      => 'startTime',
-        'timeMin'      => DateTime.now,
-        'timeMax'      => DateTime.now >> 1,
+        'timeMin'      => Date.today.to_datetime,
+        'timeMax'      => (Date.today >> 1).to_datetime,
       },
     ).data.items.each do |item|
       start_datetime = item.start.date_time || item.start.date
@@ -46,8 +46,11 @@ task :scraping do
         :htmlLink    => item.htmlLink,
         :start       => start_datetime,
         :end         => end_datetime,
+        :last_updated => DateTime.now,
       )
       log.info(item.id)
     end
   end
+  # 更新されなかったものは削除
+  Event.filter{ (start >= Date.today) & (last_updated <= (Date.today - 1)) }.delete
 end
