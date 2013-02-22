@@ -6,6 +6,6 @@ Sequel::Model.db = case Padrino.env
   when :test        then Sequel.connect("postgres://localhost/idol_calendar_test",        :loggers => [logger])
 end
 
-Sequel.extension :named_timezones
+Sequel.extension :named_timezones, :pagination
 Sequel.datetime_class = DateTime
 Sequel.default_timezone = 'Asia/Tokyo'

@@ -1,13 +1,17 @@
 h3 直近の現場一覧
 p 最終更新: #{ Event.select{ max(last_updated) }.first[:max].strftime('%Y-%m-%d %H:%M:%S') }
 ul.unstyled.events
-  - now_line = false
-  - Event.filter{ start >= Date.today }.order(:start).each do |event|
+  - line = nil
+  - @events.each do |event|
     - w = %w(日 月 火 水 木 金 土)[event.start.wday]
-    - if (! now_line) && event.start >= DateTime.now
-      hr.now
-      - now_line = true
+    - if event.start >= DateTime.now
+      - unless line.nil? || line
+        hr.now
+        - line = true
+    - else
+      - line = false
     li
       == link_to event.start.strftime((event.start.hour || event.start.minute).zero? ? "%-m/%-d(#{w})" : "%-m/%-d(#{w}) %H:%M"), event.htmlLink, :target => '_blank'
       span.location= event.location
       span.summary= event.summary
+== slim :'include/pager', :layout => false, :locals => { :data => @events }

@@ -6,7 +6,7 @@ html
     title idol-calendar
     link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css" media="screen"
     link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap-responsive.min.css"
-    link rel="stylesheet" type="text/css" href="/stylesheets/style.css"
+    == stylesheet_link_tag :style
   body
     .navbar.navbar-static-top
       .navbar-inner
@@ -17,5 +17,5 @@ html
               == link_to 'about', '/about'
     .container
       == yield
-    script type="text/javascript" src="/javascripts/lib/jquery-1.9.1.min.js"
+    == javascript_include_tag :'lib/jquery-1.9.1.min.js'
     script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"
