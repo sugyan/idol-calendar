@@ -36,7 +36,7 @@ task :scraping do
       },
     ).data.items.each do |item|
       filter = /(?:イベント|ライブ|live|公演|ツアー|出演|開場|開演|open|start|握手|チェキ|サイン)/i
-      next unless (event.summary.match(filter) || (event.description && event.description.match(filter)))
+      next unless (item.summary.match(filter) || (item.description && item.description.match(filter)))
       start_datetime = item.start.date_time || item.start.date
       end_datetime   = item.end.date_time   || item.end.date
       Event.find_or_create(:id => item.id).update(
@@ -51,7 +51,7 @@ task :scraping do
         :end         => end_datetime,
         :last_updated => DateTime.now,
       )
-      log.info(item.id)
+      log.info('%s: %s' % [item.id, item.summary[0 .. 31]])
     end
   end
   # 更新されなかったものは削除
