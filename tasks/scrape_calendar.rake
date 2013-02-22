@@ -13,7 +13,7 @@ task :scraping do
   )
   client.authorization.fetch_access_token!
 
-  today = DateTime.now.new_offset('+09:00').to_date.to_datetime # JST today
+  today = Date.today.to_datetime
   Calendar.each do |calendar|
     log.info(calendar.cid)
     data = client.execute(
