@@ -5,7 +5,7 @@ p
 p 鋭意作成中。
 h4 取得対象としているカレンダー
 ul
-  - Calendar.each do |calendar|
+  - Calendar.order(:id).each do |calendar|
     li
       == link_to calendar.summary, 'https://www.google.com/calendar/embed?src=' + CGI.escape(calendar.cid), :target => '_blank'
 footer

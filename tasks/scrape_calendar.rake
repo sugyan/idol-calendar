@@ -34,6 +34,8 @@ task :scraping do
         'timeMax'      => (Date.today >> 1).to_datetime,
       },
     ).data.items.each do |item|
+      filter = /(?:イベント|ライブ|live|公演|ツアー|出演|開場|開演|open|start|握手|チェキ|サイン)/i
+      next unless (event.summary.match(filter) || (event.description && event.description.match(filter)))
       start_datetime = item.start.date_time || item.start.date
       end_datetime   = item.end.date_time   || item.end.date
       Event.find_or_create(:id => item.id).update(
