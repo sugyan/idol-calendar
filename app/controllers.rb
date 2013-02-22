@@ -1,6 +1,7 @@
 IdolCalendar.controllers  do
   get :index do
-    @events = Event.filter{ start >= Date.today }.order(:start).paginate(params[:page].to_i.nonzero? || 1, 200)
+    today = DateTime.now.new_offset('+09:00').to_date.to_datetime
+    @events = Event.filter{ start >= today }.order(:start).paginate(params[:page].to_i.nonzero? || 1, 200)
     render 'index'
   end
 

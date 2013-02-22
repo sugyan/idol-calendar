@@ -13,6 +13,7 @@ task :scraping do
   )
   client.authorization.fetch_access_token!
 
+  today = DateTime.now.new_offset('+09:00').to_date.to_datetime # JST today
   Calendar.each do |calendar|
     log.info(calendar.cid)
     data = client.execute(
@@ -30,8 +31,8 @@ task :scraping do
         'calendarId'   => calendar.cid,
         'singleEvents' => true,
         'orderBy'      => 'startTime',
-        'timeMin'      => Date.today.to_datetime,
-        'timeMax'      => (Date.today >> 1).to_datetime,
+        'timeMin'      => today,
+        'timeMax'      => today >> 1,
       },
     ).data.items.each do |item|
       filter = /(?:イベント|ライブ|live|公演|ツアー|出演|開場|開演|open|start|握手|チェキ|サイン)/i
@@ -54,5 +55,5 @@ task :scraping do
     end
   end
   # 更新されなかったものは削除
-  Event.filter{ (start >= Date.today) & (last_updated <= (Date.today - 1)) }.delete
+  Event.filter{ (start >= today) & (last_updated <= (today - 1)) }.delete
 end
