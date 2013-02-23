@@ -9,7 +9,3 @@ ul
   - Calendar.order(:id).each do |calendar|
     li
       == link_to calendar.summary, 'https://www.google.com/calendar/embed?src=' + CGI.escape(calendar.cid), :target => '_blank'
-footer
-  .pull-right
-    | created by 
-    == link_to '@sugyan', 'https://twitter.com/sugyan'

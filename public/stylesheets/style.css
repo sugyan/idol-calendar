@@ -9,3 +9,11 @@ ul.events hr.now {
     border: 1px solid #FF8080;
     margin: 3px 0;
 }
+
+footer {
+    height: 60px;
+    background-color: #f5f5f5;
+}
+footer .social-buttons, footer .credit {
+    margin: 15px 0;
+}

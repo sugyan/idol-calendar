@@ -19,3 +19,20 @@ html
       == yield
     == javascript_include_tag :'lib/jquery-1.9.1.min.js'
     script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"
+    footer
+      .container
+        .social-buttons.pull-left
+          span.twitter
+            a href="https://twitter.com/share" class="twitter-share-button" data-url="http://idol-calendar.herokuapp.com/" data-lang="ja" ツイート
+            script type="text/javascript"
+              | !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+          span.hatena
+            a href="http://b.hatena.ne.jp/entry/http://idol-calendar.herokuapp.com/" class="hatena-bookmark-button" data-hatena-bookmark-title="idol-calendar" data-hatena-bookmark-layout="standard-balloon" title="このエントリーをはてなブックマークに追加"
+              img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;"
+            script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"
+          span.facebook
+            iframe scrolling="no" style="border: none; overflow: hidden; height: 20px; width: 75px;" title="Like this content on Facebook." class="fb_ltr" src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fidol-calendar.herokuapp.com%2F&width=450&layout=button_count&colorscheme=light&show_faces=false&action=like"
+        .pull-right
+          p.credit
+            | created by 
+            == link_to '@sugyan', 'https://twitter.com/sugyan'
