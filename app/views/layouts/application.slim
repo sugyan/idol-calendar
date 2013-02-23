@@ -18,22 +18,16 @@ html
           == link_to 'idol-calendar', '/', :class => 'brand'
           .nav-collapse.collapse.navbar-responsive-collapse
             ul.nav
-              li.dropdown
-                a data-toggle="dropdown"
-                  | 地域別
-                  b.caret
-                ul.dropdown-menu
-                  li == link_to '北海道', url_for(:area, :area => :hokkaido)
-                  li == link_to '東北', url_for(:area, :area => :tohoku)
-                  li == link_to '関東', url_for(:area, :area => :kanto)
-                  li == link_to '中部・甲信越', url_for(:area, :area => :chubu)
-                  li == link_to '関西', url_for(:area, :area => :kansai)
-                  li == link_to '中国・四国', url_for(:area, :area => :chushi)
-                  li == link_to '九州・沖縄', url_for(:area, :area => :kyushu)
-              li == link_to '検索', url_for(:search)
+              li == link_to '北海道', url_for(:area, :area => :hokkaido)
+              li == link_to '東北', url_for(:area, :area => :tohoku)
+              li == link_to '関東', url_for(:area, :area => :kanto)
+              li == link_to '中部・甲信越', url_for(:area, :area => :chubu)
+              li == link_to '関西', url_for(:area, :area => :kansai)
+              li == link_to '中国・四国', url_for(:area, :area => :chushi)
+              li == link_to '九州・沖縄', url_for(:area, :area => :kyushu)
             ul.nav.pull-right
-              li
-                == link_to 'about', '/about'
+              li == link_to '検索', url_for(:search)
+              li == link_to 'about', '/about'
     .container
       == yield
     == javascript_include_tag :'lib/jquery-1.9.1.min.js'

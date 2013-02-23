@@ -6,5 +6,4 @@ $(function () {
     $('#permalink').click(function () {
         this.select();
     });
-    $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropagation(); });
 });
