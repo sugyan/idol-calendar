@@ -22,6 +22,9 @@ footer .social-buttons, footer .credit {
     margin: 15px 0;
 }
 @media (max-width: 767px) {
+    body {
+        padding-top: 0px;
+    }
     footer {
         margin-right: -20px;
         margin-left: -20px;
