@@ -1,3 +1,7 @@
+body {
+    padding-top: 40px;
+}
+
 ul.events span.location {
     color: gray;
     padding: 0 5px;
