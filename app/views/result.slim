@@ -1,2 +1,5 @@
 h3 &quot;#{ params[:word] }&quot;#{ params[:cid] ? '+α' : '' }の検索結果
+p.form-inline
+  label.control-label Permalink:&nbsp;
+  input#permalink type="text" value="#{ request.url }"
 == slim :'include/list', :layout => false
