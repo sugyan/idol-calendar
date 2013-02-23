@@ -1,25 +1,3 @@
 h3 直近の現場一覧
 p 最終更新: #{ Event.select{ max(last_updated) }.first[:max].strftime('%Y-%m-%d %H:%M:%S') }
-ul.unstyled.events
-  - line = nil
-  - @events.each do |event|
-    - wdays = %w(日 月 火 水 木 金 土)
-    - ws = wdays[event.start.wday]
-    - we = wdays[event.end.wday]
-    - if event.start >= DateTime.now
-      - unless line.nil? || line
-        hr.now
-        - line = true
-    - else
-      - line = false
-    li
-      - if (event.start.hour || event.start.minute).zero?
-        - if event.end - event.start > 1
-          == link_to sprintf("%s - %s", event.start.strftime("%-m/%-d(#{ws})"), event.end.strftime("%-m/%-d(#{we})")), url_for(:event, :id => event.id)
-        - else
-          == link_to event.start.strftime("%-m/%-d(#{ws})"), url_for(:event, :id => event.id)
-      - else
-        == link_to event.start.strftime("%-m/%-d(#{ws}) %H:%M"), url_for(:event, :id => event.id)
-      span.location = event.location
-      span.summary = event.summary
-== slim :'include/pager', :layout => false, :locals => { :data => @events }
+== slim :'include/list', :layout => false

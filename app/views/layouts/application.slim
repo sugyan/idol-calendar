@@ -12,6 +12,9 @@ html
       .navbar-inner
         .container
           == link_to 'idol-calendar', '/', :class => 'brand'
+          ul.nav
+            li
+              == link_to '検索', url_for(:search)
           ul.nav.pull-right
             li
               == link_to 'about', '/about'
