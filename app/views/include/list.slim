@@ -13,11 +13,11 @@ ul.unstyled.events
     li
       - if (event.start.hour || event.start.minute).zero?
         - if event.end - event.start > 1
-          == link_to sprintf("%s - %s", event.start.strftime("%-m/%-d(#{ws})"), event.end.strftime("%-m/%-d(#{we})")), url_for(:event, :id => event.id)
+          = sprintf("%s - %s", event.start.strftime("%-m/%-d(#{ws})"), event.end.strftime("%-m/%-d(#{we})"))
         - else
-          == link_to event.start.strftime("%-m/%-d(#{ws})"), url_for(:event, :id => event.id)
+          = event.start.strftime("%-m/%-d(#{ws})")
       - else
-        == link_to event.start.strftime("%-m/%-d(#{ws}) %H:%M"), url_for(:event, :id => event.id)
+        = event.start.strftime("%-m/%-d(#{ws}) %H:%M")
       span.location = event.location
-      span.summary = event.summary
+      span.summary == link_to event.summary, url_for(:event, :id => event.id)
 == slim :'include/pager', :layout => false, :locals => { :data => @events }
