@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'google/api_client'
 
-task :scraping do
+task :crawling do
   log = Logger.new(STDOUT)
   client = Google::APIClient.new(:application_name => 'idol-calendar', :version => '0.0.1')
   client.authorization = Signet::OAuth2::Client.new(
