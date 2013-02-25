@@ -15,12 +15,13 @@
     $ heroku config:set GOOGLE_API_KEY="-----BEGIN RSA PRIVATE KEY-----
     ...
     -----END RSA PRIVATE KEY-----"
+    $ git push heroku master
     $ heroku run bundle exec padrino rake sq:migrate:auto
     $ heroku run bundle exec padrino rake seed
-    $ git push heroku master
+    $ heroku restart
 
 ### tasks ###
 
-- scraping
+crawling (use scheduler:standard)
 
-    $ bundle exec padrino rake scraping
+    $ bundle exec padrino rake crawling
