@@ -18,6 +18,6 @@ ul.unstyled.events
           = event.start.strftime("%-m/%-d(#{ws})")
       - else
         = event.start.strftime("%-m/%-d(#{ws}) %H:%M")
-      span.location = event.location
       span.summary == link_to event.summary, url_for(:event, :id => event.id)
+      span.location = event.location
 == slim :'include/pager', :layout => false, :locals => { :data => @events }
