@@ -152,3 +152,5 @@ Calendar.find_or_create(:cid => 'sei@nomake.jp')                                
   .update(:area => 'kyushu')
 Calendar.find_or_create(:cid => '9jkan5p6oqqcq6hi3sc9ka8fvc@group.calendar.google.com')              # RYUKYU IDOL
   .update(:area => 'kyushu')
+Calendar.find_or_create(:cid => 'tokyocheerparty604@gmail.com')                                      # トーキョーチアチアパーティー
+  .update(:area => 'kanto')
