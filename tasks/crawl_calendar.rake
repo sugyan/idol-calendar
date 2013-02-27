@@ -36,7 +36,7 @@ task :crawling do
       },
     ).data.items.each do |item|
       filter = /(?:イベント|ライブ|live|公演|ツアー|出演|開場|開演|open|start|握手|チェキ|サイン)/i
-      next unless (item.summary.match(filter) || (item.description && item.description.match(filter)))
+      next unless (item.summary && item.summary.match(filter) || (item.description && item.description.match(filter)))
       start_datetime = item.start.date_time || item.start.date
       end_datetime   = item.end.date_time   || item.end.date
       Event.find_or_create(:id => item.id).update(
