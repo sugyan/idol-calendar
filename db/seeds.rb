@@ -154,3 +154,7 @@ Calendar.find_or_create(:cid => '9jkan5p6oqqcq6hi3sc9ka8fvc@group.calendar.googl
   .update(:area => 'kyushu')
 Calendar.find_or_create(:cid => 'tokyocheerparty604@gmail.com')                                      # トーキョーチアチアパーティー
   .update(:area => 'kanto')
+Calendar.find_or_create(:cid => 'rojmeftfbb1kmgo483s8l38gq0@group.calendar.google.com')              # ANNA☆S
+  .update(:area => 'kanto')
+Calendar.find_or_create(:cid => 'trcallover@gmail.com')                                              # ALLOVER
+  .update(:area => 'kanto')
