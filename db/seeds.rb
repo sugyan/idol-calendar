@@ -158,3 +158,5 @@ Calendar.find_or_create(:cid => 'rojmeftfbb1kmgo483s8l38gq0@group.calendar.googl
   .update(:area => 'kanto')
 Calendar.find_or_create(:cid => 'trcallover@gmail.com')                                              # ALLOVER
   .update(:area => 'kanto')
+Calendar.find_or_create(:cid => 'we.are.takeoff@gmail.com')                                          # TAKE OFF(テイクオフ)
+  .update(:area => 'kansai')
