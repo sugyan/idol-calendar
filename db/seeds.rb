@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
 
-Calendar.find_or_create(:cid => 'jetlyzer@yahoo.co.jp')                                              # 無銭カレンダー
-  .update(:area => 'kanto')
-Calendar.find_or_create(:cid => 'jhqrtl9na3gev1vihqnpt3qvgo@group.calendar.google.com')              # ライブアイドルカレンダー
-  .update(:area => 'kanto')
 Calendar.find_or_create(:cid => 'tsukubatvevent@gmail.com')                                          # PigooLIVE
   .update(:area => 'kanto')
 Calendar.find_or_create(:cid => 'bbvrqpohqa6k9mib9788pmk3ro@group.calendar.google.com')              # 北海道アイドルカレンダー
