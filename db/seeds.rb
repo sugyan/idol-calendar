@@ -144,20 +144,14 @@ Calendar.find_or_create(:cid => 'we.are.takeoff@gmail.com')                     
   .update(:area => 'kansai')
 Calendar.find_or_create(:cid => 'ohagirlchuchuchu@yahoo.co.jp')                                      # おはガールちゅ！ちゅ！ちゅ！
   .update(:area => 'kanto')
-Calendar.find_or_create(:cid => 'arcjewel.com_2mficjq407ngq86729c7o1v6p8@group.calendar.google.com')
+Calendar.find_or_create(:cid => 'arcjewel.com_2mficjq407ngq86729c7o1v6p8@group.calendar.google.com') # Doll☆Elements
   .update(:area => 'kanto')
-Calendar.find_or_create(:cid => 'arcjewel.com_4hr0km6r11bkoc1meehn2s5cn8@group.calendar.google.com')
+Calendar.find_or_create(:cid => 'arcjewel.com_4hr0km6r11bkoc1meehn2s5cn8@group.calendar.google.com') # 愛乙女★DOLL
   .update(:area => 'kanto')
-Calendar.find_or_create(:cid => 'arcjewel.com_cq6e5uk9n64mfvitadfhiv3qp4@group.calendar.google.com')
+Calendar.find_or_create(:cid => 'arcjewel.com_cq6e5uk9n64mfvitadfhiv3qp4@group.calendar.google.com') # 愛乙女★DOLL研究生
   .update(:area => 'kanto')
-
-Calendar.where(:cid => 'mercicoco.sapporo2012@gmail.com')                     .delete # MERCI♡COCO
-Calendar.where(:cid => 'pdne7f9gcavkl92dqoqv8ubou0@group.calendar.google.com').delete # NAGOYA 無銭
-Calendar.where(:cid => 'j76ss5h9b2gu1hj3bn56r5jkec@group.calendar.google.com').delete # NAGOYA 有銭
-Calendar.where(:cid => '9p0ilmeposq8gsnch5516l3qbg@group.calendar.google.com').delete # NAGOYA 購入特典
-Calendar.where(:cid => 'kitada-erica@shopro.co.jp')                           .delete # おはガールちゅ!ちゅ!ちゅ!
-Calendar.where(:cid => 'ptp0siimqf9nge4p62pee569u4@group.calendar.google.com').delete # 9nine
-Calendar.where(:cid => '7pfbnqqgl2l8glkbg2b95g4t84@group.calendar.google.com').delete # ベイビーレイズ
+Calendar.find_or_create(:cid => 'strawberrythea7@gmail.com')                                         # 苺☆シアター
+  .update(:area => 'kanto')
 
 Event.graph(:calendars, :id => :calendar_id).where(:cid => nil).each do |row|
   row[:events].delete
