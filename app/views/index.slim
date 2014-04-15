@@ -1,3 +1,0 @@
-h3 直近の現場一覧
-p 最終更新: #{ Event.select{ max(last_updated) }.first[:max].strftime('%Y-%m-%d %H:%M:%S') }
-== slim :'include/list', :layout => false
