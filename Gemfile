@@ -38,3 +38,5 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# template
+gem 'slim-rails', '~> 2.1.4'
